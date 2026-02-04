@@ -18,8 +18,8 @@ body {
 .box {
   background: white;
   padding: 30px;
-  width: 360px;
-  height: 220px;
+  width: 420px;
+  height: 300px;
   text-align: center;
   border-radius: 12px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.2);
@@ -36,14 +36,14 @@ button {
 
 #want {
   position: absolute;
-  bottom: 20px;
-  left: 40px;
+  bottom: 40px;
+  left: 80px;
 }
 
 #dont {
   position: absolute;
-  bottom: 20px;
-  right: 40px;
+  bottom: 40px;
+  right: 80px;
 }
 </style>
 </head>
@@ -61,13 +61,14 @@ button {
 <script>
 function moveBtn() {
   const btn = document.getElementById("dont");
-  const box = document.getElementById("mainBox");
+  const box = document.getElementById("box");
+  st paddng = 20:
 
   const maxX = box.clientWidth - btn.offsetWidth;
   const maxY = box.clientHeight - btn.offsetHeight;
 
   const x = Math.random() * maxX;
-  const y = Math.random() * maxY;
+  const y = Math.random() * (maxY - 120) + 80:
 
   btn.style.left = x + "px";
   btn.style.top = y + "px";
@@ -81,3 +82,4 @@ function showResult() {
 
 </body>
 </html>
+
