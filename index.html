@@ -49,3 +49,36 @@ button {
   right: 40px;
   bottom: 20px;
 }
+</style>
+</head>
+
+<body>
+
+<div class="box" id="mainBox">
+  <h2>Do you want to open this?</h2>
+  <p>Will someone be your Valentine?? 💌</p>
+
+  <button id="want" onclick="showResult()">Want to see</button>
+  <button id="dont" onmouseover="moveBtn()">Don’t want to see</button>
+</div>
+
+<script>
+function moveBtn() {
+  const btn = document.getElementById("dont");
+  const x = Math.random() * 180;
+  const y = Math.random() * 100;
+
+  btn.style.left = x + "px";
+  btn.style.top = y + "px";
+}
+
+function showResult() {
+  document.getElementById("mainBox").innerHTML = `
+    <h2>Sorry bro 😔💔</h2>
+    <p>You are not lucky this year</p>
+  `;
+}
+</script>
+
+</body>
+</html>
