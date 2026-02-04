@@ -1,85 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Secret Message</title>
+  <meta charset="UTF-8">
+  <title>Secret Message</title>
 
-<style>
-body {
-  margin: 0;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #ffd6d6;
-  font-family: Arial, sans-serif;
-}
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-.box {
-  background: white;
-  padding: 30px;
-  width: 420px;
-  height: 300px;
-  text-align: center;
-  border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-  position: relative;
-}
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      font-family: Arial, sans-serif;
+    }
 
-button {
-  padding: 10px 14px;
-  font-size: 14px;
-  cursor: pointer;
-  border-radius: 6px;
-  border: 1px solid #333;
-}
+    .box {
+      width: 70vw;              /* 70% of screen */
+      max-width: 700px;
+      height: 60vh;
+      max-height: 420px;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+      text-align: center;
+      padding: 40px;
+      position: relative;
+    }
 
-#want {
-  position: absolute;
-  bottom: 40px;
-  left: 80px;
-}
+    h2 {
+      margin-top: 0;
+    }
 
-#dont {
-  position: absolute;
-  bottom: 40px;
-  right: 80px;
-}
-</style>
+    p {
+      font-size: 16px;
+    }
+
+    .buttons {
+      position: absolute;
+      bottom: 40px;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+    }
+
+    button {
+      padding: 12px 22px;
+      font-size: 15px;
+      border-radius: 8px;
+      border: 1px solid #333;
+      cursor: pointer;
+      background: #fff;
+    }
+
+    #dont {
+      position: absolute;
+    }
+
+    .final {
+      font-size: 22px;
+      margin-top: 60px;
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="box" id="mainBox">
-  <h2>Do you want to open this?</h2>
-  <p>Will someone be your Valentine?? 💌</p>
+  <div class="box" id="box">
+    <h2>Do you want to open this?</h2>
+    <p>Will someone be your Valentine?? 💌</p>
 
-  <button id="want" onclick="showResult()">Want to see</button>
-  <button id="dont" onmouseenter="moveBtn()">Don’t want to see</button>
-</div>
+    <div class="buttons">
+      <button id="want" onclick="finalMessage()">Want to see</button>
+      <button id="dont" onmouseover="moveBtn()">Don’t want to see</button>
+    </div>
 
-<script>
-function moveBtn() {
-  const btn = document.getElementById("dont");
-  const box = document.getElementById("box");
-  st paddng = 20:
+    <div id="result" class="final"></div>
+  </div>
 
-  const maxX = box.clientWidth - btn.offsetWidth;
-  const maxY = box.clientHeight - btn.offsetHeight;
+  <script>
+    function moveBtn() {
+      const btn = document.getElementById("dont");
+      const box = document.getElementById("box");
 
-  const x = Math.random() * maxX;
-  const y = Math.random() * (maxY - 120) + 80:
+      const boxRect = box.getBoundingClientRect();
+      const btnRect = btn.getBoundingClientRect();
 
-  btn.style.left = x + "px";
-  btn.style.top = y + "px";
-}
+      const maxX = boxRect.width - btnRect.width - 20;
+      const maxY = boxRect.height - btnRect.height - 100;
 
-function showResult() {
-  document.getElementById("mainBox").innerHTML =
-    "<h2>Sorry bro 😔💔</h2><p>You are not lucky this year</p>";
-}
-</script>
+      const x = Math.random() * maxX;
+      const y = Math.random() * maxY;
+
+      btn.style.left = x + "px";
+      btn.style.top = y + "px";
+    }
+
+    function finalMessage() {
+      document.getElementById("result").innerHTML =
+        "Sorry bro 😔<br>You are not lucky this year 💔";
+    }
+  </script>
 
 </body>
 </html>
-
